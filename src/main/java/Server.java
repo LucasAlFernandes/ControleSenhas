@@ -287,21 +287,24 @@ public class Server extends HttpServlet
 			pageSession.setAttribute("msg", "Usuario ou senha Invalidos!");
 		}
 	}
-	private void gerarSenha(String Preferencial)
+	private void gerarSenha(String Preferencial) throws IOException
 	{
 		boolean p = Preferencial == null ? false : true;
 		cs.GerarSenha(sl, p);		
 		pageSession.setAttribute("PaginaAtual", "Senha");
+		SalvarDadosSenhas();
 	}
-	private void cancelarSenha()
+	private void cancelarSenha() throws IOException
 	{
 		cs.cancelarSenha(cs.getSenhaUsuario(sl));
 		pageSession.setAttribute("PaginaAtual", "Senha");
+		SalvarDadosSenhas();
 	}
-	private void renovarSenha()
+	private void renovarSenha() throws IOException
 	{
 		cs.renovarSenha(cs.getSenhaUsuario(sl));	
 		pageSession.setAttribute("PaginaAtual", "Senha");
+		SalvarDadosSenhas();
 	}
 	private void reiniciarSistema() throws IOException
 	{
@@ -319,7 +322,7 @@ public class Server extends HttpServlet
 		pageSession.setAttribute("PaginaAtual", "Sistema");
 		pageSession.setAttribute("msg", "Contagem Reiniciada");
 	}
-	private void proximaSenha()
+	private void proximaSenha() throws IOException
 	{
 		pageSession.setAttribute("senhaChamada", cs.chamarProximaSenha(sl));
 		if(pageSession.getAttribute("senhaChamada") != null)
@@ -327,11 +330,13 @@ public class Server extends HttpServlet
 		else
 			pageSession.setAttribute("msg", "Não ha mais senhas na fila!");
 		pageSession.setAttribute("PaginaAtual", "Sistema");
+		SalvarDadosSenhas();
 	}
-	private void clienteAusente()
+	private void clienteAusente() throws IOException
 	{
 		cs.atrasarSenha((Senha)pageSession.getAttribute("senhaChamada"));
 		pageSession.setAttribute("PaginaAtual", "Sistema");
 		pageSession.setAttribute("msg", "Cliente marcado como ausente!");
+		SalvarDadosSenhas();
 	}
 }
