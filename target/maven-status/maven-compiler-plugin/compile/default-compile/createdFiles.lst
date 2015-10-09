@@ -1,0 +1,9 @@
+Controle\SalvarRecuperarDados.class
+Controle\Login.class
+Dados\Gerente.class
+Dados\Senha.class
+Controle\controlePagina.class
+Cliente.class
+Server.class
+Controle\GerenciaLogin.class
+Controle\controleSenhas.class

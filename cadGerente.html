@@ -1,0 +1,22 @@
+<script type='text/javascript'>
+	function _click()
+	{
+		document.frmCad.action = document.getElementById('ref').value;
+		document.frmCad.submit();
+	}
+</script>
+<div id="frmUsuarioSenha">
+<br><h1>Criar uma Conta</h1>
+<form method="post" action="" name="frmCad" >
+	<br>
+	<label>[Usuario]:</label>&emsp;
+	<input type="text" name="inLogin"><br><br>
+	<label>[Senha]:</label>&emsp;
+	<input type="password" name="inSenha"><br><br>
+	<label>[Server]:</label>&emsp;
+	<input type="text" name="ref" id="ref" value="http://localhost:8080/ControleSenhas/Cliente"><br><br>
+	<input type="hidden" name="cadastroOk" value="true">
+	<input type="hidden" name ="Gerencia" value ="true"><br><br>
+	<input type="button" onclick="_click()" name="cadastrar" value="Cadastrar">
+</form>
+</div>
